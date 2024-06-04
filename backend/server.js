@@ -12,7 +12,13 @@ const app = express();
 dotenv.config();
 ConnectDb();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://note-zipper-three.vercel.app/"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // app.get("/users", async(req, res) => {
 //   const users = await User.find();
